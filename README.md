@@ -1,2 +1,2 @@
 # Android-Studio-Project-1
-First go at creating an app using android studio. This repository serves as a record of the work done towards a later goal of creating a fully functional app. This repository only includes my rough attempt and practise not the actual application.
+First go at creating an app using android studio. This repository serves as a record of the work done towards a later goal of creating a fully functional app. This repository only includes my rough attempts and practise, not the actual application. Most of the initial work done in the repository is from a tutorial which can be found [here](https://developer.android.com/codelabs/build-your-first-android-app#0).
