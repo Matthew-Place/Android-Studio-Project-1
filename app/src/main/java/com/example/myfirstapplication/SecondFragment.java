@@ -42,21 +42,28 @@ public class SecondFragment extends Fragment {
         TextView headerView = binding.textviewHeader;
         headerView.setText(countText);
 
+        TextView randomView = binding.textviewRandom;
+
+        setRandomNumber(randomView, count);
+
+        binding.regenerateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setRandomNumber(randomView, count);
+            }
+        });
+    }
+
+    private void setRandomNumber(TextView randomView, int count) {
+        randomView.setText(Integer.toString(getRandomNumber(count)));
+    }
+
+    private int getRandomNumber(int count) {
         int randomNumber = 0;
         if (count > 0) {
             randomNumber = random.nextInt(count + 1);
         }
-
-        TextView randomView = binding.textviewRandom;
-        randomView.setText(Integer.toString(randomNumber));
-
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-            }
-        });
+        return randomNumber;
     }
 
     @Override
