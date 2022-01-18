@@ -21,7 +21,7 @@ public class FirstFragment extends Fragment {
 
     @Override
     public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
+            @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
 
@@ -41,8 +41,9 @@ public class FirstFragment extends Fragment {
         binding.randomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                int currentCount = Integer.parseInt(showCountTextView.getText().toString());
+                FirstFragmentDirections.ActionFirstFragmentToSecondFragment action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(currentCount);
+                NavHostFragment.findNavController(FirstFragment.this).navigate(action);
             }
         });
 
@@ -57,16 +58,16 @@ public class FirstFragment extends Fragment {
         binding.countButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                countMe(view);
+                countMe();
             }
         });
     }
 
-    private void countMe(View view) {
+    private void countMe() {
         String countString = showCountTextView.getText().toString();
-        Integer count = Integer.parseInt(countString);
+        int count = Integer.parseInt(countString);
         count++;
-        showCountTextView.setText(count.toString());
+        showCountTextView.setText(Integer.toString(count));
     }
 
     @Override
